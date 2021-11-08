@@ -22,7 +22,7 @@ def settings = [
         registry: 'https://k8stest-harbor.netisdev.com',
         prefix: 'k8s-harbor.netisdev.com/',
         unittest: [
-            image: 'jn/rust-base',
+            image: 'npm/npm-unittest-centos7:python3',
             tag: 'latest'
         ]
     ]
