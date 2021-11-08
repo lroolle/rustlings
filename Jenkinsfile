@@ -17,9 +17,9 @@ def settings = [
         repo: 'https://git.netisdev.com/scm/~eric.wang/rustlings.git',
     ],
     docker: [
-        credentialsId: 'test',
-        secrets: ['test'],
-        registry: 'https://k8s-harbor.netisdev.com',
+        credentialsId: 'k8s-jenkins',
+        secrets: ['k8s-jenkins'],
+        registry: 'https://k8stest-harbor.netisdev.com',
         prefix: 'k8s-harbor.netisdev.com/',
         unittest: [
             image: 'jn/rust-base',
@@ -59,7 +59,7 @@ podTemplate(
             name: 'jnlp',
             image: "jenkins/inbound-agent:4.9-1",
             ttyEnabled: true,
-            alwaysPullImage: false)
+            alwaysPullImage: true)
     ],
     imagePullSecrets: settings.docker.secrets,
     volumes: [
