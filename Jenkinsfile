@@ -17,13 +17,13 @@ def settings = [
         repo: 'https://git.netisdev.com/scm/~eric.wang/rustlings.git',
     ],
     docker: [
-        credentialsId: 'k8s-jenkins',
-        secrets: ['k8s-jenkins'],
+        credentialsId: 'npm.robo',
+        secrets: ['npm.robo'],
         registry: 'https://k8stest-harbor.netisdev.com',
         prefix: 'k8s-harbor.netisdev.com/',
         unittest: [
             image: 'npm/npm-unittest-centos7',
-            tag: 'python3'
+            tag: 'latest'
         ]
     ]
 ]
