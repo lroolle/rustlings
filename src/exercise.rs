@@ -312,6 +312,7 @@ mod test {
     }
 
     #[test]
+    #[ignore]
     fn test_exercise_with_output() {
         let exercise = Exercise {
             name: "finished_exercise".into(),

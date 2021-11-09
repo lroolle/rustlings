@@ -1,4 +1,3 @@
-import groovy.json.JsonSlurperClassic
 
 parameters {
     string(name: 'BRANCH_NAME')
@@ -9,10 +8,9 @@ parameters {
 def BRANCH_NAME = params.BRANCH_NAME ? params.BRANCH_NAME : env.BRANCH_NAME
 def CHANGE_BRANCH = params.CHANGE_BRANCH ? params.CHANGE_BRANCH : env.CHANGE_BRANCH
 def CHANGE_TARGET = params.CHANGE_TARGET ? params.CHANGE_TARGET : env.CHANGE_TARGET
-def BUILD_UID = UUID.randomUUID().toString().replace("-","").substring(0,6)
 
 def settings = [
-    label: "jn-rustlings-${BUILD_UID}",
+    label: "jn-rustlings-${UUID.randomUUID().toString().replace("-","").substring(0,6)}",
     git: [
         credentialsId: 'test',
         branch: CHANGE_BRANCH ? CHANGE_BRANCH : BRANCH_NAME,
