@@ -10,19 +10,19 @@ def BRANCH_NAME = params.BRANCH_NAME ? params.BRANCH_NAME : env.BRANCH_NAME
 def CHANGE_BRANCH = params.CHANGE_BRANCH ? params.CHANGE_BRANCH : env.CHANGE_BRANCH
 def CHANGE_TARGET = params.CHANGE_TARGET ? params.CHANGE_TARGET : env.CHANGE_TARGET
 def settings = [
-    label: "mypod-${UUID.randomUUID().toString()}",
+    label: "jn-rustlings-${UUID.randomUUID().toString()}",
     git: [
         credentialsId: 'test',
         branch: CHANGE_BRANCH ? CHANGE_BRANCH : BRANCH_NAME,
         repo: 'https://git.netisdev.com/scm/~eric.wang/rustlings.git',
     ],
     docker: [
-        credentialsId: 'npm.robo',
-        secrets: ['npm.robo'],
+        credentialsId: 'jn.robo',
+        secrets: ['jn.robo'],
         registry: 'https://k8stest-harbor.netisdev.com',
         prefix: 'k8s-harbor.netisdev.com/',
         unittest: [
-            image: 'npm/npm-unittest-centos7',
+            image: 'jn/rust-base',
             tag: 'latest'
         ]
     ]
