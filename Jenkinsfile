@@ -85,14 +85,16 @@ podTemplate(
                     sh "cargo test"
                 }
             }
-            stage('SonarQube Analysis') {
-                def scannerHome = tool 'SonarScanner';
-                withSonarQubeEnv() {
+            stage('SonarQube analysis') {
+                def scannerHome = tool 'SonarScanner 4.0';
+                withSonarQubeEnv('SonarQube Server') {
+                    // If you have configured more than one global server connection, you can specify its name
+                    println ${env.SONAR_HOST_URL}
                     sh "${scannerHome}/bin/sonar-scanner"
                 }
             }
         } catch(err) {
-            throw err
+                throw err
         } finally {
             stage('Report Result') {
                 // junit testResults: 'junit.xml', allowEmptyResults: true
