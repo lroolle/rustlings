@@ -10,7 +10,7 @@ def BRANCH_NAME = params.BRANCH_NAME ? params.BRANCH_NAME : env.BRANCH_NAME
 def CHANGE_BRANCH = params.CHANGE_BRANCH ? params.CHANGE_BRANCH : env.CHANGE_BRANCH
 def CHANGE_TARGET = params.CHANGE_TARGET ? params.CHANGE_TARGET : env.CHANGE_TARGET
 def settings = [
-    label: "jn-rustlings-${UUID.randomUUID().toString()}",
+    label: "jn-rustlings-${UUID.randomUUID().toString().subString(0,8)}",
     git: [
         credentialsId: 'test',
         branch: CHANGE_BRANCH ? CHANGE_BRANCH : BRANCH_NAME,
